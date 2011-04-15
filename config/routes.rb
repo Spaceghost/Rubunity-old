@@ -1,4 +1,6 @@
 Rubunity::Application.routes.draw do
+  resources :conferences
+
   root :to => "pages#home"
 
   resources :comments

@@ -43,6 +43,31 @@ ActiveRecord::Schema.define(:version => 20110415132638) do
     t.datetime "updated_at"
   end
 
+  create_table "conferences", :force => true do |t|
+    t.string   "name"
+    t.string   "speaker"
+    t.datetime "startdate"
+    t.datetime "enddate"
+    t.integer  "seats"
+    t.text     "description"
+    t.string   "permalink"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "conferences_users", :id => false, :force => true do |t|
+    t.integer  "conference_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "roles", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
