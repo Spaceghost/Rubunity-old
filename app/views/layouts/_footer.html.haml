@@ -1,0 +1,12 @@
+#footer_bottom
+  .holder
+    .copy
+      Copyright ©
+      = Time.now.strftime("%Y")
+      = succeed "." do
+        %a{:href => "http://rubunity.com"} Rubuntity
+      \- Per general consensus, pants are required.
+    .links
+      %ul
+        = render 'layouts/gnav'
+    %div{:style => "clear:both;"}

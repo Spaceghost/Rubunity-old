@@ -34,7 +34,7 @@
       
   
   %p
-    - if controller.action_name = 'new'
+    - if action_name == 'new'
       = image_submit_tag 'signup.png', :class => 'button_img'
     - else
       = image_submit_tag 'submit.png', :class => 'button_img'

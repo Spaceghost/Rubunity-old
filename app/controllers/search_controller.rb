@@ -1,5 +1,4 @@
 class SearchController < ApplicationController
-  layout 'standard', :except => 'index'
   
   def query
     logger.debug "!!!!!!!!!!!!!!!!!!!! blah"

@@ -1,3 +1,5 @@
+- title "Add a Bookmark"
+
 = content_for :breadcrumbs do
   %li= link_to 'Bookmarks', bookmarks_path
   %li Create
@@ -20,4 +22,4 @@
         %th{:style => "vertical-align:top"}= f.label :description
         %td= f.text_area :description, :cols => 85, :rows => 10
     %br/
-    %p{:style => "text-align:right"}= f.submit 'Create'
+    = image_submit_tag 'submit.png', :class => 'button_img'

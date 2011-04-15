@@ -16,7 +16,7 @@
   
 %p#notice
   
-%h1.float_left= @bookmark.title
+%h1.bookmarks.float_left= @bookmark.title
 
 %ul.sosumi.float_right
   %li
@@ -48,8 +48,8 @@
   = link_to @bookmark.url do
     = image_tag '/images/buttons/btn_go_to_site_red.png'
 
-%h2.section{:style => 'margin:50px 0 20px 0;'}
-%h2.section
+%h2.bookmarks.section{:style => 'margin:50px 0 20px 0;'}
+%h2.bookmarks.section
   Topics
   %span{:style => 'float:right; font-size:12px;'}
     - if can? :add_topic, @bookmark
@@ -65,14 +65,14 @@
 
 %div{:style => 'display: none;'}
   #topic-form
-    %h2 Add Topic
+    %h2.bookmarks Add Topic
     = form_tag (bookmark_add_topic_path(@bookmark)), :remote => true do
       = text_field_tag :topic
       = submit_tag
     %p.sosumi Separate multiple topics with commas (ex: A, B, C)
 
-%h2.section{:style => 'margin:50px 0 20px 0;'}
-%h2.section
+%h2.bookmarks.section{:style => 'margin:50px 0 20px 0;'}
+%h2.bookmarks.section
   Rails Versions
   %span{:style => 'float:right; font-size:12px;'}
     - if can? :add_rails_version, @bookmark
@@ -88,23 +88,23 @@
 
 %div{:style => 'display: none;'}
   #rails-version-list{:style => 'width:820px; height:550px; padding:10px 30px 20px 20px;'}
-    %h2 Add Rails Version
+    %h2.bookmarks Add Rails Version
     = form_tag bookmark_add_rails_version_path(@bookmark), :remote => true do
       - active_version = rails_versions.last[0]
-      %h2= "Rails #{active_version}"
+      %h2.bookmarks= "Rails #{active_version}"
       %ul
         - rails_versions.reverse.each do |version|
           - if version[0] != active_version
             - active_version = version[0]
-            %h2= active_version.to_i > 0 ? "Rails #{active_version}" : "Rails"
+            %h2.bookmarks= active_version.to_i > 0 ? "Rails #{active_version}" : "Rails"
             %ul
           %li.version_check_box
             = check_box_tag("rails_versions[]", version)
             = version
       = submit_tag
   
-%h2.section{:style => 'margin:50px 0 20px 0;'}
-%h2.section
+%h2.bookmarks.section{:style => 'margin:50px 0 20px 0;'}
+%h2.bookmarks.section
   Ruby Versions
   %span{:style => 'float:right; font-size:12px;'}
     - if can? :add_ruby_version, @bookmark
@@ -120,15 +120,15 @@
 
 %div{:style => 'display:none;'}
   #ruby_version_form
-    %h2 Add Ruby Version
+    %h2.bookmarks Add Ruby Version
     = form_tag bookmark_add_ruby_version_path(@bookmark), :remote => true do
       = text_field_tag :ruby_version
       = submit_tag
     %p.sosumi Separate multiple versions with commas (ex: 1.8.6, 1.8.7, 1.9.2-p0, 1.9.2)
 
 
-%h2.section{:style => 'margin:50px 0 20px 0;'} 
-%h2.section Comments
+%h2.bookmarks.section{:style => 'margin:50px 0 20px 0;'} 
+%h2.bookmarks.section Comments
 
 #comments
   - if ! @bookmark.comments.blank?

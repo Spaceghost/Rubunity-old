@@ -26,16 +26,7 @@
     #content
       .content_holder
         = yield
-    #footer_bottom
-      .holder
-        .copy
-          Copyright ©
-          = succeed "." do
-            %a{:href => "http://rubunity.com"} Rubuntity
-          All Rights Reserved.
-        .links
-          %ul
-            = render 'layouts/gnav'
-        %div{:style => "clear:both;"}
+    
+    = render '/layouts/footer'
     
     = render '/layouts/analytics' if Rails.env.production?

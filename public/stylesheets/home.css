@@ -15,7 +15,50 @@
   margin: 0 auto;
 }
 
-#home_container .textInput input { margin-top:15px; }
+#home_container {
+  min-height: 450px;
+  background: #EAEAEA;
+  color: #333;
+}
+
+#home_container .textInput
+{
+  	width:550px; 
+  	margin:auto;
+}
+
+#home_container .textInput input
+{
+	-webkit-appearance:none;
+	background:#FFFFFF url(/images/search_icon.png) no-repeat 10px center;
+	opacity:0.7;
+	border:0px;
+	color:#444;
+	font-size:24px;
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px;
+	border-radius:8px;
+
+	padding:20px 20px 20px 35px;
+	
+	height: 50px;
+	width:550px;
+	margin: 15px auto auto;
+	box-shadow:2px 4px 8em #333333;
+	border:1px #EAEAEA solid;
+	outline:none;
+}
+
+#home_container .textInput input:focus
+{
+	transition: all 0.25s ease-in-out;
+   -webkit-transition: all 0.25s ease-in-out;
+   -moz-transition: all 0.25s ease-in-out;
+    box-shadow: 0 0 50px rgba(81,203,238, 1);
+   -webkit-box-shadow: 0 0 50px rgba(81,203,238, 1); 
+   -moz-box-shadow: 0 0 50px rgba(81,203,238, 1);
+   border:1px solid rgba(81,203,238, 0.8);
+}
 
 input[type="password"]
 {

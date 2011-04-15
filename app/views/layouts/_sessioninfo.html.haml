@@ -23,7 +23,8 @@
             (#{current_user.nickname})
           - if current_user.admin?
             = link_to 'Admin', admin_path
-
+            %span.sosumi
+              |
           = link_to 'Settings', settings_path
           %span.sosumi
             |
