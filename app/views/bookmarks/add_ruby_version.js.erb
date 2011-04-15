@@ -1,7 +1,21 @@
 $("input#ruby_version").val("");
 
-<% params[:ruby_version].to_s.split(",").each do |rubies| %>
-  $("#ruby-versions").append("<span><%= rubies %></span>");
+var ruby_array = []
+
+$("#ruby-versions").children().each(function(){
+  ruby_array.push("<span>" + $(this).text() + "</span>");
+});
+
+<% params[:ruby_version].split(%r{,\s*}).each do |version| %>
+  ruby_array.push("<span><%= version %></span>");
 <% end %>
+
+ruby_array = $.unique(ruby_array).reverse();
+
+$("#ruby-versions").empty();
+
+for (version in ruby_array) {
+  $("#ruby-versions").append(ruby_array[version]);
+}
 
 $("a#fancybox-close").click();

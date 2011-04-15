@@ -84,10 +84,11 @@ class BookmarksController < ApplicationController
       @topics << topic
     end
     
-    params[:topic].split(",").each do |topic|
+    params[:topic].split(%r{,\s*}).each do |topic|
       @topics << topic
       @topics.uniq
     end
+    
     @topics.each do |topic|
       @bookmark.topic_list.add(topic)
     end
@@ -103,9 +104,20 @@ class BookmarksController < ApplicationController
   
   def add_rails_version
     @bookmark = Bookmark.find_by_permalink(params[:bookmark_id])
-
-    params[:rails_versions].each do |rails_version|
-      @bookmark.rails_version_list.add(rails_version)
+    
+    @versions = []
+    
+    @bookmark.rails_version_list.each do |version|
+      @versions << version
+    end
+    
+    params[:rails_versions].each do |version|
+      @versions << version
+      @versions.uniq
+    end
+    
+    @versions.each do |version|
+      @bookmark.rails_version_list.add(version)
     end
         
     respond_to do |format|

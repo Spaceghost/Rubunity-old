@@ -6,7 +6,7 @@ $("#topics").children().each(function(){
   topics_array.push("<span>" + $(this).text() + "</span>");
 });
 
-<% params[:topic].split(",").each do |topic| %>
+<% params[:topic].split(%r{,\s*}).each do |topic| %>
   topics_array.push("<span><%= topic %></span>");
 <% end %>
 

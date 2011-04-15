@@ -281,29 +281,29 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, tex
 
 #rails-version-list ul li
 {
-	cursor:pointer;
-	-webkit-border-radius:4px;
-	-moz-border-radius:4px;
-	
-	background: #ffffff; /* old browsers */
-	background: -moz-linear-gradient(top, #ffffff 0%, #f6f6f6 47%, #ededed 100%); /* firefox */
+  cursor:pointer;
+  -webkit-border-radius:4px;
+  -moz-border-radius:4px;
+  
+  background: #ffffff; /* old browsers */
+  background: -moz-linear-gradient(top, #ffffff 0%, #f6f6f6 47%, #ededed 100%); /* firefox */
 
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(47%,#f6f6f6), color-stop(100%,#ededed)); /* webkit */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(47%,#f6f6f6), color-stop(100%,#ededed)); /* webkit */
 
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed',GradientType=0 ); /* ie */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed',GradientType=0 ); /* ie */
 }
 
 #rails-version-list ul li.active
 {
-	
-	background: #feffe8; /* old browsers */
-	background: -moz-linear-gradient(top, #feffe8 0%, #d6dbbf 100%); /* firefox */
+  
+  background: #feffe8; /* old browsers */
+  background: -moz-linear-gradient(top, #feffe8 0%, #d6dbbf 100%); /* firefox */
 
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#feffe8), color-stop(100%,#d6dbbf)); /* webkit */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#feffe8), color-stop(100%,#d6dbbf)); /* webkit */
 
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#feffe8', endColorstr='#d6dbbf',GradientType=0 ); /* ie */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#feffe8', endColorstr='#d6dbbf',GradientType=0 ); /* ie */
 }
-}
+
 
 
 /*#rails-versions span

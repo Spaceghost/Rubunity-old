@@ -21,4 +21,12 @@ $(function() {
     window.location.href = "/bookmark/vote/" + $(this).attr('value');
   });
   
+  $('.add-topic-link').click(function() {
+    $('input#topic').focus();
+  });
+  
+  $('.add-ruby-link').click(function() {
+    $('input#ruby_version').focus();
+  });
+  
 });
