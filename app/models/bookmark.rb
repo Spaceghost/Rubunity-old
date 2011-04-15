@@ -4,12 +4,14 @@ class Bookmark < ActiveRecord::Base
   belongs_to :user
   has_many :comments, :as => :commentable
   after_create :generate_permalink
-  
+
+  acts_as_taggable 
   acts_as_taggable_on :ruby_versions, :rails_versions, :topics
                     
   has_many :flags, :as => :flaggable
   
   validates_uniqueness_of :url
+  validates :title, :url, :presence => true
  
   define_index do
     # fields

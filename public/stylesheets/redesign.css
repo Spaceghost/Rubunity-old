@@ -249,7 +249,7 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, tex
 
 /* topics */
 #topics { clear:both; }
-#topics span
+#topics span, #rails-versions span, #ruby-versions span
 {
 	padding:2px 10px 2px 10px;
 	background:lightblue;
@@ -269,34 +269,36 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, tex
 
 /* rails versions */
 #rails-version-list ul { list-style:none; text-indent:0px; padding-left:0px; line-height:2.5em; }
-#rails-version-list ul li { font-size:12px; display:inline; padding:5px; }
+#rails-version-list ul li { font-size:12px; display:inline; padding:5px; margin: 5px; }
 
 #rails-version-list ul li
 {
-	cursor:pointer;
-	-webkit-border-radius:4px;
-	-moz-border-radius:4px;
-	
-	background: #ffffff; /* old browsers */
-	background: -moz-linear-gradient(top, #ffffff 0%, #f6f6f6 47%, #ededed 100%); /* firefox */
+  cursor:pointer;
+  -webkit-border-radius:4px;
+  -moz-border-radius:4px;
+  
+  background: #ffffff; /* old browsers */
+  background: -moz-linear-gradient(top, #ffffff 0%, #f6f6f6 47%, #ededed 100%); /* firefox */
 
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(47%,#f6f6f6), color-stop(100%,#ededed)); /* webkit */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(47%,#f6f6f6), color-stop(100%,#ededed)); /* webkit */
 
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed',GradientType=0 ); /* ie */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed',GradientType=0 ); /* ie */
 }
 
 #rails-version-list ul li.active
 {
-	
-	background: #feffe8; /* old browsers */
-	background: -moz-linear-gradient(top, #feffe8 0%, #d6dbbf 100%); /* firefox */
+  
+  background: #feffe8; /* old browsers */
+  background: -moz-linear-gradient(top, #feffe8 0%, #d6dbbf 100%); /* firefox */
 
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#feffe8), color-stop(100%,#d6dbbf)); /* webkit */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#feffe8), color-stop(100%,#d6dbbf)); /* webkit */
 
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#feffe8', endColorstr='#d6dbbf',GradientType=0 ); /* ie */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#feffe8', endColorstr='#d6dbbf',GradientType=0 ); /* ie */
 }
-}
 
+.version_check_box input[type=checkbox] {
+  display: none;
+}
 
 /*#rails-versions span
 {
@@ -638,4 +640,10 @@ a:hover { color:#3A3D43; }
 	border-radius: 8px;
 	border-top-right-radius: 0;
 	z-index:9999;
+}
+
+.up_vote {
+  width: 30px;
+  vertical-align: middle;
+  cursor: pointer;
 }

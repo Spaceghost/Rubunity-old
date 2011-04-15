@@ -60,9 +60,47 @@ class BookmarksController < ApplicationController
 
   def add_topic
     @bookmark = Bookmark.find_by_permalink(params[:bookmark_id])
-
-    params[:topic].to_s.split(%r{,\s*}).each do |topic|
+    
+    @topics = []
+    
+    @bookmark.topic_list.each do |topic|
+      @topics << topic
+    end
+    
+    params[:topic].split(%r{,\s*}).each do |topic|
+      @topics << topic
+      @topics.uniq
+    end
+    
+    @topics.each do |topic|
       @bookmark.topic_list.add(topic)
+    end
+        
+    respond_to do |format|
+      if @bookmark.save
+        format.js
+      else
+        flash[:notice] = "You can not add topics."
+      end
+    end
+  end
+  
+  def add_rails_version
+    @bookmark = Bookmark.find_by_permalink(params[:bookmark_id])
+    
+    @versions = []
+    
+    @bookmark.rails_version_list.each do |version|
+      @versions << version
+    end
+    
+    params[:rails_versions].each do |version|
+      @versions << version
+      @versions.uniq
+    end
+    
+    @versions.each do |version|
+      @bookmark.rails_version_list.add(version)
     end
         
     respond_to do |format|
@@ -77,20 +115,6 @@ class BookmarksController < ApplicationController
 
     params[:ruby_version].to_s.split(%r{,\s*}).each do |ruby_version|
       @bookmark.ruby_version_list.add(ruby_version)
-    end
-        
-    respond_to do |format|
-      if @bookmark.save
-        format.js
-      end
-    end
-  end
-  
-  def add_rails_version
-    @bookmark = Bookmark.find_by_permalink(params[:bookmark_id])
-
-    params[:rails_version].to_s.split(%r{,\s*}).each do |rails_version|
-      @bookmark.rails_version_list.add(rails_version)
     end
         
     respond_to do |format|

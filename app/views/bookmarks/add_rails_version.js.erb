@@ -1,2 +1,19 @@
-$("input#rails_version").val("");
-$("#rails-versions").append("<span><%= params[:rails_version] %></span>");
+var versions_array = []
+
+$("#rails-versions").children().each(function(){
+  versions_array.push("<span>" + $(this).text() + "</span>");
+});
+
+<% params[:rails_versions].each do |version| %>
+  versions_array.push("<span><%= version %></span>");
+<% end %>
+
+versions_array = $.unique(versions_array).reverse();
+
+$("#rails-versions").empty();
+
+for (version in versions_array) {
+  $("#rails-versions").append(versions_array[version]);
+}
+
+$("a#fancybox-close").click();

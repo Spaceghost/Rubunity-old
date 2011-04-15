@@ -1,2 +1,21 @@
 $("input#topic").val("");
-$("#topics").append("<span><%= params[:topic] %></span>");
+
+var topics_array = []
+
+$("#topics").children().each(function(){
+  topics_array.push("<span>" + $(this).text() + "</span>");
+});
+
+<% params[:topic].split(%r{,\s*}).each do |topic| %>
+  topics_array.push("<span><%= topic %></span>");
+<% end %>
+
+topics_array = $.unique(topics_array).reverse();
+
+$("#topics").empty();
+
+for (topic in topics_array) {
+  $("#topics").append(topics_array[topic]);
+}
+
+$("a#fancybox-close").click();
