@@ -269,7 +269,7 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, tex
 
 /* rails versions */
 #rails-version-list ul { list-style:none; text-indent:0px; padding-left:0px; line-height:2.5em; }
-#rails-version-list ul li { font-size:12px; display:inline; padding:5px; }
+#rails-version-list ul li { font-size:12px; display:inline; padding:5px; margin: 5px; }
 
 #rails-version-list ul li
 {
@@ -296,7 +296,9 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, tex
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#feffe8', endColorstr='#d6dbbf',GradientType=0 ); /* ie */
 }
 
-
+.version_check_box input[type=checkbox] {
+  display: none;
+}
 
 /*#rails-versions span
 {
@@ -638,10 +640,6 @@ a:hover { color:#3A3D43; }
 	border-radius: 8px;
 	border-top-right-radius: 0;
 	z-index:9999;
-}
-
-.version_check_box input[type=checkbox] {
-  display: inline;
 }
 
 .up_vote {

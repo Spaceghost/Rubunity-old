@@ -99,7 +99,8 @@
             %h2= active_version.to_i > 0 ? "Rails #{active_version}" : "Rails"
             %ul
           %li.version_check_box
-            = check_box_tag("bookmark[rails_versions][]", version) + label_tag(version)
+            = check_box_tag("rails_versions[]", version)
+            = version
       = submit_tag
   
 %h2.section{:style => 'margin:50px 0 20px 0;'}

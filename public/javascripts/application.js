@@ -29,4 +29,14 @@ $(function() {
     $('input#ruby_version').focus();
   });
   
+  $('.version_check_box').click(function(){
+    var check_me = $(this).find(":checkbox");
+    
+    if (check_me.is(':checked')) {
+      check_me.attr('checked', false);
+    } else {
+      check_me.attr('checked', true);
+    };
+  });
+  
 });
