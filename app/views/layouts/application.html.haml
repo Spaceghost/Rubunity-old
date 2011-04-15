@@ -1,31 +1,41 @@
 !!!
 %html
-
   %head
     %title
       Rubunity
       = "- " + yield(:title) unless !:title
-    = stylesheet_link_tag 'application', 'flash', 'facebox'
-    = javascript_include_tag 'jquery', 'rails', 'application', 'facebox'
+    = stylesheet_link_tag 'application', 'bookmarks', 'facebox', 'fancybox'
+    = javascript_include_tag :defaults, 'fancybox', 'easing'
     = csrf_meta_tag
 
-  %body
-    #container
-      = render 'layouts/header'
+  %body  
+    #header
+      .header_holder
+        .logo
+        = render 'layouts/sessioninfo'
+        #nav
+          = render 'layouts/gnav'
+        .divider
+    #toolbar
+      %ul#breadcrumbs
+        %li#home= link_to '&nbsp;'.html_safe, '/'
+        = yield :breadcrumbs
+      %ul#actions
+        = yield :actions
       .clearer
-      
-      - flash.each do |name, msg|
-        = content_tag :div, msg, :id => "flash_#{name}"
-
-      #toolbar
-        %ul#breadcrumbs
-          %li#home= link_to '&nbsp;'.html_safe, '/'
-          = yield :breadcrumbs
-        %ul#actions
-          = yield :actions
-        .clearer
-
-      #content
+    #content
+      .content_holder
         = yield
-      
-    = render 'layouts/footer_bottom'
+    #footer_bottom
+      .holder
+        .copy
+          Copyright ©
+          = succeed "." do
+            %a{:href => "http://rubunity.com"} Rubuntity
+          All Rights Reserved.
+        .links
+          %ul
+            = render 'layouts/gnav'
+        %div{:style => "clear:both;"}
+    
+    = render '/layouts/analytics' if Rails.env.production?

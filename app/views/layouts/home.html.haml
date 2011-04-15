@@ -4,10 +4,13 @@
     %title
       Rubunity
       = "- " + yield(:title) unless !:title
-    = stylesheet_link_tag 'flash', 'redesign', 'home'
-    = javascript_include_tag 'jquery', 'rails', 'application', 'facebox'
+    = stylesheet_link_tag 'application', 'flash', 'home'
+    = javascript_include_tag 'jquery', 'rails', 'application', 'facebox', 'fancybox'
+    = csrf_meta_tag
     
   %body
     = yield
 
     = render 'layouts/footer_bottom'
+    
+    = render '/layouts/analytics' if Rails.env.production?

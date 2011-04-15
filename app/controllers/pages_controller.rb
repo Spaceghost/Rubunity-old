@@ -12,9 +12,6 @@ class PagesController < ApplicationController
   end
   
   def choose_layout
-    case action_name
-      when 'home' then 'home'
-      else 'redesign'
-    end
+    'home' unless action_name != 'home'
   end
 end

@@ -25,42 +25,9 @@
     By 
     = "<strong>#{@bookmark.user.full_name}</strong>".html_safe
 .clearer
-#visit-url{:style => 'float:right'}
-  - if @url_status == true
-    = link_to @bookmark.url do
-      = image_tag '/images/buttons/btn_go_to_site.png'
-  - else
-    = link_to @bookmark.url do
-      = image_tag '/images/buttons/btn_go_to_site_red.png'
 
 %h3= @bookmark.url
 
-#rails-versions
-  %h3.section{:style => 'margin:50px 0 20px 0;'}
-    Rails Versions
-    %span{:style => 'float:right; font-size:12px;'}
-      %a{:href => "#rails-version-form", :rel => "facebox", :class => "addleft"} Add Rails Version
-    .clearer
-    %ul
-      - if ! @bookmark.rails_version_list.blank?
-        - @bookmark.rails_version_list.each do |rails_version|
-          %li= rails_version
-      - else
-        %li.sosumi No rails versions tagged
-  
-   
-#ruby-versions
-  %h3.section{:style => 'margin:50px 0 20px 0;'}
-    Ruby Versions
-    %span{:style => 'float:right; font-size:12px;'}
-      %a{:href => "#rails-version-list", :rel => "fancybox", :class => "addleft"} Add Ruby Version
-    .clearer
-    %ul
-      - if ! @bookmark.rails_version_list.blank?
-        - @bookmark.rails_version_list.each do |rails_version|
-          %li= rails_version
-      - else
-        %li.sosumi No rails versions tagged
 #vote.float_right
   = pluralize(@bookmark.votes, 'Vote')
   - unless !current_user || @bookmark.user_id == current_user.id || current_user.voted?(@bookmark)
@@ -85,8 +52,8 @@
 %h2.section
   Topics
   %span{:style => 'float:right; font-size:12px;'}
-  %span.float_right
-    %a{:href => "#topic-form", :rel => "facebox", :class => "addleft"} Add Topic
+    - if can? :add_topic, @bookmark
+      %a{:href => "#topic-form", :rel => "fancybox", :class => "addleft add-topic-link"} Add Topic
     
 #topics
   - if ! @bookmark.topic_list.blank?
@@ -96,20 +63,21 @@
     %p.sosumi No topics tagged
 .clearer
 
-#topic-form{:style => 'display:none;'}
-#topic-form
-  %h2 Add Topic
-  = form_tag bookmark_add_topic_path(@bookmark), :remote => true do
-    = text_field_tag :topic
-    = submit_tag
-  %p.sosumi Separate multiple topics with commas (ex: A, B, C)
+%div{:style => 'display: none;'}
+  #topic-form
+    %h2 Add Topic
+    = form_tag (bookmark_add_topic_path(@bookmark)), :remote => true do
+      = text_field_tag :topic
+      = submit_tag
+    %p.sosumi Separate multiple topics with commas (ex: A, B, C)
 
+%h2.section{:style => 'margin:50px 0 20px 0;'}
 %h2.section
   Rails Versions
-  %span.float_right
-    %a{:href => "#rails-version-form", :rel => "facebox", :class => "addleft"} Add Rails Version
-  
-#rails-version-form{:style => 'display:none'}
+  %span{:style => 'float:right; font-size:12px;'}
+    - if can? :add_rails_version, @bookmark
+      = link_to 'Add Rails Version', '#rails-version-list', {:rel => 'fancybox', :class => 'addleft'}
+     
 #rails-versions
   - if ! @bookmark.rails_version_list.blank?
     - @bookmark.rails_version_list.each do |rails_version|
@@ -118,20 +86,29 @@
     %p.sosumi No rails versions tagged
 .clearer
 
-#rails-version-form
-  %h2 Add Rails Version
-  = form_tag bookmark_add_rails_version_path(@bookmark), :remote => true do
-    = text_field_tag :rails_version
-    = submit_tag
-  %p.sosumi Separate multiple versions with commas (ex: 2.3.5, 2.3.8, 3.0.1)
+%div{:style => 'display: none;'}
+  #rails-version-list{:style => 'width:820px; height:550px; padding:10px 30px 20px 20px;'}
+    %h2 Add Rails Version
+    = form_tag bookmark_add_rails_version_path(@bookmark), :remote => true do
+      - active_version = rails_versions.last[0]
+      %h2= "Rails #{active_version}"
+      %ul
+        - rails_versions.reverse.each do |version|
+          - if version[0] != active_version
+            - active_version = version[0]
+            %h2= active_version.to_i > 0 ? "Rails #{active_version}" : "Rails"
+            %ul
+          %li.version_check_box
+            = check_box_tag("rails_versions[]", version)
+            = version
+      = submit_tag
   
 %h2.section{:style => 'margin:50px 0 20px 0;'}
 %h2.section
   Ruby Versions
   %span{:style => 'float:right; font-size:12px;'}
-    %a{:href => "#ruby-version-form", :rel => "fancybox", :class => "addleft"} Add Ruby Version
-  %span.float_right
-    %a{:href => "#ruby-version-form", :rel => "facebox", :class => "addleft"} Add Ruby Version
+    - if can? :add_ruby_version, @bookmark
+      %a{:href => "#ruby_version_form", :rel => "fancybox", :class => "addleft add-ruby-link"} Add Ruby Version
     
 #ruby-versions
   - if ! @bookmark.ruby_version_list.blank?
@@ -141,19 +118,16 @@
     %p.sosumi No ruby versions tagged
 .clearer
 
-#ruby-version-form{:style => 'display:none;'}
-#ruby-version-form
-  %h2 Add Ruby Version
-  = form_tag bookmark_add_ruby_version_path(@bookmark), :remote => true do
-    = text_field_tag :ruby_version
-    = submit_tag
-  %p.sosumi Separate multiple versions with commas (ex: 1.8.6, 1.8.7, 1.9.2-p0, 1.9.2)
+%div{:style => 'display:none;'}
+  #ruby_version_form
+    %h2 Add Ruby Version
+    = form_tag bookmark_add_ruby_version_path(@bookmark), :remote => true do
+      = text_field_tag :ruby_version
+      = submit_tag
+    %p.sosumi Separate multiple versions with commas (ex: 1.8.6, 1.8.7, 1.9.2-p0, 1.9.2)
 
 
-%div{:style => 'display:none'}
-  #rails-version-list{:style => 'width:800px; height:400px; padding:10px 30px 20px 20px;'}
-    = rails_versions_list
-  
+%h2.section{:style => 'margin:50px 0 20px 0;'} 
 %h2.section Comments
 
 #comments
