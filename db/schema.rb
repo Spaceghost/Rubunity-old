@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110318175754) do
+ActiveRecord::Schema.define(:version => 20110415132638) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "user_id"
@@ -39,12 +39,6 @@ ActiveRecord::Schema.define(:version => 20110318175754) do
     t.text     "body"
     t.integer  "commentable_id"
     t.string   "commentable_type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "roles", :force => true do |t|
-    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -78,7 +72,6 @@ ActiveRecord::Schema.define(:version => 20110318175754) do
     t.string   "nickname"
     t.boolean  "admin",             :default => false
     t.integer  "roles_mask",        :default => 4
-    t.string   "role"
     t.integer  "up_votes",          :default => 0,     :null => false
     t.integer  "down_votes",        :default => 0,     :null => false
   end
