@@ -11,6 +11,7 @@ class Bookmark < ActiveRecord::Base
   has_many :flags, :as => :flaggable
   
   validates_uniqueness_of :url
+  validates :title, :url, :presence => true
  
   define_index do
     # fields
