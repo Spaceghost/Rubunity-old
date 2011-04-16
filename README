@@ -6,3 +6,18 @@ sphinx-1.10-beta/
 ./configure --prefix=/usr/local --with-mysql=/usr/local/mysql
 make
 make install
+
+
+== Skipping a Tracked file with information that needs to be sanitized
+***THIS HAS TO BE RAN ON EVERY NEW CHECKOUT OF THE REPO***
+
+git update-index --assume-unchanged SOME_FILE
+
+- And Tracking it again if needed in the future
+
+git update-index --no-assume-unchanged SOME_FILE
+
+
+== Facebook App ID is located in /config/app_config.yml
+
+This file should be ignored and edited on the server after initial deploy.
