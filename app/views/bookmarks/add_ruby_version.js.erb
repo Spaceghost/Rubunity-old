@@ -2,6 +2,8 @@ $("input#ruby_version").val("");
 
 var ruby_array = []
 
+$("#ruby-versions p.sosumi").remove();
+
 $("#ruby-versions").children().each(function(){
   ruby_array.push("<span>" + $(this).text() + "</span>");
 });

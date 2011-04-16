@@ -1,5 +1,7 @@
 var versions_array = []
 
+$("#rails-versions p.sosumi").remove();
+
 $("#rails-versions").children().each(function(){
   versions_array.push("<span>" + $(this).text() + "</span>");
 });

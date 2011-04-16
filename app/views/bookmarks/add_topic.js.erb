@@ -2,6 +2,8 @@ $("input#topic").val("");
 
 var topics_array = []
 
+$("#topics p.sosumi").remove();
+
 $("#topics").children().each(function(){
   topics_array.push("<span>" + $(this).text() + "</span>");
 });

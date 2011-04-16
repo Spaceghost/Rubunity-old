@@ -580,3 +580,8 @@ a:hover { color:#3A3D43; }
 #topic-form, #rails-version-list, #ruby_version_form {
   overflow: hidden;
 }
+
+#facebook_like {
+  height: 20px;
+  margin-top: 10px;
+}

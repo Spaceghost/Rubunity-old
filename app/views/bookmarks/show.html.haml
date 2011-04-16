@@ -34,10 +34,8 @@
     = image_tag 'up_vote.png', :value => @bookmark.id, :class => 'up_vote'
     
 #share.float_right
-  #fb-root
   = tweet_button(:text => @bookmark.title)
-  = link_to(image_tag('facebook.gif'), '#', :class => "fb_share")
-  = facebook_share_once
+  = facebook_like
 
 %br
 

@@ -17,7 +17,6 @@ gem 'json'
 gem 'version_sorter'
 gem 'make_voteable'
 gem 'tweet-button'
-gem 'facebook_share'
 
 group :development do
   gem 'nifty-generators'
