@@ -1,5 +1,7 @@
 Rubunity::Application.routes.draw do
-  resources :conferences
+  resources :events do
+    match "sign_up" => "events#sign_up"
+  end
 
   root :to => "pages#home"
 

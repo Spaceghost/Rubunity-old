@@ -1,0 +1,11 @@
+- title @event.topic
+
+%h1
+  = @event.topic
+
+%p
+  = @event.event_date.strftime("%m/%d/%Y") + '-' + @event.start_time.strftime("%H:%M%p %Z")
+
+
+= link_to "Sign Up", event_sign_up_path(@event)
+  

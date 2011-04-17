@@ -1,0 +1,13 @@
+- title 'Events'
+
+= content_for :breadcrumbs do
+  %li Events
+
+= content_for :actions do
+  %li= link_to 'New Event', new_event_path, :class => 'addleft float_right'
+
+%h1
+  Events
+
+- @events.each do |event|
+  %li= link_to event.topic, event
