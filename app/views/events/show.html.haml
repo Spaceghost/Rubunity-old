@@ -6,6 +6,10 @@
 %p
   = @event.event_date.strftime("%m/%d/%Y") + '-' + @event.start_time.strftime("%H:%M%p %Z")
 
+%p
+  Seats Available:
+  = @event.available_slots
 
-= link_to "Sign Up", event_sign_up_path(@event)
+
+= @event.full? ? "Full" : link_to("Sign Up", event_sign_up_path(@event))
   

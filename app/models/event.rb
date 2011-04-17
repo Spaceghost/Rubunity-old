@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
-  has_many :events_users
-  has_many :users, :through => :events_users
+  has_many :registrations
+  has_many :users, :through => :registrations
 
   after_create :generate_permalink
 
@@ -11,6 +11,14 @@ class Event < ActiveRecord::Base
   
   def verify_event
     
+  end
+
+  def full?
+    available_slots <= 0
+  end
+
+  def available_slots
+    seat_count - users.size
   end
 
   private

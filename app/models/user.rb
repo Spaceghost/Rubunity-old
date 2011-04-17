@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   make_voter
-  has_many :events_users
-  has_many :events, :through => :events_users
+  has_many :registrations
+  has_many :events, :through => :registrations
   has_many :comments
 
   acts_as_authentic

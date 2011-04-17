@@ -1,6 +1,6 @@
-class CreateEventsUsers < ActiveRecord::Migration
+class CreateRegistrations < ActiveRecord::Migration
   def self.up
-    create_table :events_users, :id => false do |t|
+    create_table :registrations do |t|
       t.integer :event_id
       t.integer :user_id
 
