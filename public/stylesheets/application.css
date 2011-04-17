@@ -56,7 +56,7 @@ ul.inline li { display:inline; }
 
 /* Linkx */
 a.add { background:url(/images/icons/plus.png) right no-repeat; padding-right: 20px; }
-a.addleft { background:url(/images/icons/plus.png) right no-repeat; padding:0px 17px; }
+a.addleft { background:url(/images/icons/plus.png) right no-repeat; padding:0px 17px; float: right;}
 a.arrow { background:url(/images/arrow_next.gif) right no-repeat; padding-right: 20px; }
 a.back { background:url(/images/icons/back.png) right no-repeat; padding-right: 20px; }
 a.backleft { background:url(/images/icons/back.png) left no-repeat; padding:6px 10px 3px 20px;}
@@ -67,7 +67,7 @@ a.edit { background:url(/images/icons/edit.png) right no-repeat; padding-right: 
 a.editleft { background:url(/images/icons/edit.gif) left no-repeat; padding:3px 0px 3px 20px; }
 a.flag { background:url(/images/icons/flag.png) left no-repeat !important; padding-left: 25px; }
 a.remove { background:url(/images/icons/minus.png) right no-repeat; padding-right: 20px; }
-a.removeleft { background:url(/images/icons/minus.png) left no-repeat; padding-left: 20px; }
+a.removeleft { background:url(/images/icons/minus.png) right no-repeat; padding: 0 17px; }
 a.back { background:url(/images/icons/back.png) right no-repeat; padding-right: 20px; }
 a.backleft { background:url(/images/icons/back.png) left no-repeat; padding-left: 20px; }
 a.edit { background:url(/images/icons/edit.png) right no-repeat; padding-right: 20px; }
@@ -212,7 +212,7 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, tex
 
 /* topics */
 #topics { clear:both; }
-#topics span, #rails-versions span, #ruby-versions span
+#topics span, #rails-versions span, #ruby-versions span, #remove-topic-form span, #remove-rails-version-form span, #remove-ruby-version-form span
 {
 	padding:2px 10px 2px 10px;
 	background:lightblue;
@@ -228,6 +228,14 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, tex
 	background: -moz-linear-gradient(top, #7abcff 0%, #60abf8 44%, #4096ee 100%); /* firefox */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#7abcff), color-stop(44%,#60abf8), color-stop(100%,#4096ee)); /* webkit */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7abcff', endColorstr='#4096ee',GradientType=0 ); /* ie */
+}
+
+#remove-topic-form {
+  min-width: 250px;
+}
+
+#remove-topic-form span, #remove-rails-version-form span, #remove-ruby-version-form span {
+  cursor: pointer;
 }
 
 /* rails versions */

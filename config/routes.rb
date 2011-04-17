@@ -7,8 +7,12 @@ Rubunity::Application.routes.draw do
 
   resources :bookmarks do
     match "add_topic" => "bookmarks#add_topic"
-    match "add_rails_version", :as => "add_rails_version"
-    match "add_ruby_version", :as => "add_ruby_version"
+    match "add_rails_version" => "bookmarks#add_rails_version"
+    match "add_ruby_version" => "bookmarks#add_ruby_version"
+    
+    match "remove_topic" => "bookmarks#remove_topic"
+    match "remove_rails_version" => "bookmarks#remove_rails_version"
+    match "remove_ruby_version" => "bookmarks#remove_ruby_version"
     
     get :add_topic
     post :add_topic

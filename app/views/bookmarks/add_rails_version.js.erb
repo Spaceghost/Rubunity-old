@@ -13,9 +13,12 @@ $("#rails-versions").children().each(function(){
 versions_array = $.unique(versions_array).reverse();
 
 $("#rails-versions").empty();
+$("#remove-rails-version-form").find('span').remove();
+$(':input', '#add_rails_version_form').removeAttr('checked');
 
 for (version in versions_array) {
   $("#rails-versions").append(versions_array[version]);
+  $("#remove-rails-version-form").append(versions_array[version]);
 }
 
 $("a#fancybox-close").click();

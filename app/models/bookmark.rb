@@ -35,7 +35,7 @@ class Bookmark < ActiveRecord::Base
     "#{id}-#{title.gsub(/[^a-z0-9]+/i, '-')}"
   end
     
-    def generate_permalink
-      update_attributes(:permalink => "#{self.id}-#{self.title.parameterize}") 
-    end
+  def generate_permalink
+    update_attributes(:permalink => "#{self.id}-#{self.title.parameterize}") 
+  end
 end

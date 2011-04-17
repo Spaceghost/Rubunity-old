@@ -39,4 +39,32 @@ $(function() {
     };
   });
   
+  $('input#remove_topic').css('display', 'none');
+  $('input#remove_rails_version').css('display', 'none');
+  $('input#remove_ruby_version').css('display', 'none');
+  
+  $('#remove-topic-form span').live('click', function(){
+    var text = $(this).text();
+    $('input#remove_topic').val(text);
+    $(this).remove();
+    $('#remove_topic_form').submit();
+    $("#topics span:contains(" + text + ")").remove();
+  });
+  
+  $('#remove-rails-version-form span').live('click', function(){
+    var text = $(this).text();
+    $('input#remove_rails_version').val(text);
+    $(this).remove();
+    $('#remove_rails_version_form').submit();
+    $("#rails-versions span:contains(" + text + ")").remove();
+  });
+  
+  $('#remove-ruby-version-form span').live('click', function(){
+    var text = $(this).text();
+    $('input#remove_ruby_version').val(text);
+    $(this).remove();
+    $('#remove_ruby_version_form').submit();
+    $("#ruby-versions span:contains(" + text + ")").remove();
+  });
+  
 });

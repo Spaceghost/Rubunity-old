@@ -15,9 +15,11 @@ $("#ruby-versions").children().each(function(){
 ruby_array = $.unique(ruby_array).reverse();
 
 $("#ruby-versions").empty();
+$("#remove-ruby-version-form").find('span').remove();
 
 for (version in ruby_array) {
   $("#ruby-versions").append(ruby_array[version]);
+  $("#remove-ruby-version-form").append(ruby_array[version]);
 }
 
 $("a#fancybox-close").click();

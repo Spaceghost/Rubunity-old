@@ -15,9 +15,11 @@ $("#topics").children().each(function(){
 topics_array = $.unique(topics_array).reverse();
 
 $("#topics").empty();
+$("#remove-topic-form").find('span').remove();
 
 for (topic in topics_array) {
   $("#topics").append(topics_array[topic]);
+  $("#remove-topic-form").append(topics_array[topic]);
 }
 
 $("a#fancybox-close").click();

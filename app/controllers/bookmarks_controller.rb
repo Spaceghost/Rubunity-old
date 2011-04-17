@@ -85,6 +85,20 @@ class BookmarksController < ApplicationController
     end
   end
   
+  def remove_topic
+    @bookmark = Bookmark.find_by_permalink(params[:bookmark_id])
+    
+    @bookmark.topic_list.remove(params[:remove_topic])
+    
+    respond_to do |format|
+      if @bookmark.save
+        render :nothing => true
+      else
+        flash[:notice] = "You can not remove topics."
+      end
+    end
+  end
+  
   def add_rails_version
     @bookmark = Bookmark.find_by_permalink(params[:bookmark_id])
     
@@ -110,6 +124,20 @@ class BookmarksController < ApplicationController
     end
   end
   
+  def remove_rails_version
+    @bookmark = Bookmark.find_by_permalink(params[:bookmark_id])
+    
+    @bookmark.rails_version_list.remove(params[:remove_rails_version])
+    
+    respond_to do |format|
+      if @bookmark.save
+        render :nothing => true
+      else
+        flash[:notice] = "You can not remove Rails versions."
+      end
+    end
+  end
+  
   def add_ruby_version
     @bookmark = Bookmark.find_by_permalink(params[:bookmark_id])
 
@@ -120,6 +148,20 @@ class BookmarksController < ApplicationController
     respond_to do |format|
       if @bookmark.save
         format.js
+      end
+    end
+  end
+  
+  def remove_ruby_version
+    @bookmark = Bookmark.find_by_permalink(params[:bookmark_id])
+    
+    @bookmark.ruby_version_list.remove(params[:remove_ruby_version])
+    
+    respond_to do |format|
+      if @bookmark.save
+        render :nothing => true
+      else
+        flash[:notice] = "You can not remove Ruby versions."
       end
     end
   end
