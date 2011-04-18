@@ -12,3 +12,5 @@
 
 
 = @event.full? ? "Full" : link_to("Sign Up", event_sign_up_path(@event))
+%br/
+= link_to "Un Sign Up", event_un_sign_up_path(@event)
