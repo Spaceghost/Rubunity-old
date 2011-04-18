@@ -32,6 +32,17 @@ class EventsController < ApplicationController
       redirect_to register_url, :notice => "You have either already signed up for this event or are not logged in."
     end
   end
+  
+  def un_sign_up
+    event = Event.find_by_permalink(params[:event_id])
+
+    event.users.delete current_user
+    if event.save
+      redirect_to :back, :notice => "You have successfully un-signed up for this event." and return
+    else
+      redirect_to register_url, :notice => "You have either already un-signed up for this event or are not logged in."
+    end
+  end
 
   private
 
