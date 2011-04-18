@@ -9,6 +9,6 @@ class CreateRegistrations < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :events_users
+    drop_table :registrations
   end
 end
