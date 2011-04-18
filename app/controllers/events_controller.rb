@@ -27,7 +27,7 @@ class EventsController < ApplicationController
 
     event.users << current_user
     if event.save
-      redirect_to events_url, :notice => "You have successfully signed up for this event." and return
+      redirect_to event_path(@event), :notice => "You have successfully signed up for this event." and return
     else
       redirect_to register_url, :notice => "You have either already signed up for this event or are not logged in."
     end

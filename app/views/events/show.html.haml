@@ -1,5 +1,5 @@
 - title @event.topic
-
+%p#notice
 %h1
   = @event.topic
 
@@ -12,4 +12,3 @@
 
 
 = @event.full? ? "Full" : link_to("Sign Up", event_sign_up_path(@event))
-  

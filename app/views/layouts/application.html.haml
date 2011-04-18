@@ -4,11 +4,11 @@
     %title
       Rubunity
       = "- " + yield(:title) unless !:title
-    = stylesheet_link_tag 'application', 'facebox', 'fancybox'
-    = javascript_include_tag :defaults, 'fancybox', 'easing'
+    = stylesheet_link_tag 'application', 'facebox', 'fancybox', 'jquery.flash'
+    = javascript_include_tag :defaults, 'fancybox', 'easing', 'jquery.flash'
     = csrf_meta_tag
 
-  %body  
+  %body
     #header
       .header_holder
         .logo
@@ -30,3 +30,12 @@
     = render '/layouts/footer'
     
     = render '/layouts/analytics' if Rails.env.production?
+
+  - if flash[:notice]
+    #flash{:style => "display:none;"}
+      = notice
+    :javascript
+      $(document).ready(function() {
+        $('#flash').flash();
+      });
+
