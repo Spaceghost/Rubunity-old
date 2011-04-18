@@ -4,7 +4,12 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :admin?
   
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to root_path, :alert => exception.message
+    redirect_to root_path, :notice => exception.message
+  end
+
+  rescue_from ActiveRecord::RecordInvalid do |exception|
+    Rails.logger.info("=====#{exception.inspect}=====")
+    redirect_to :back, :notice => "Sorry. You have already Registered for this event."
   end
   
   

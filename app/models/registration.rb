@@ -1,5 +1,5 @@
 class Registration < ActiveRecord::Base
-  validates :user_id, :uniqueness => { :scope => :event_id }
+  validates_uniqueness_of :user_id,:scope => :event_id, :message => "You've already registered."
   belongs_to :user
   belongs_to :event
 end
