@@ -4,6 +4,11 @@
   %li= link_to 'Events', events_path
   %li= @event.topic
 
+= content_for :actions do
+  - if can? :edit, @event
+    %li= link_to "Edit", [:edit, @event], :class => "editleft"
+    %li= link_to 'Back', bookmarks_path, :class => 'backleft'
+
 %p#notice
 %h1
   = @event.topic

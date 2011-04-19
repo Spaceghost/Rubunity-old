@@ -1,0 +1,12 @@
+- title "Editing " + @event.topic
+
+= content_for :breadcrumbs do
+  %li= link_to 'Events', events_path
+  %li= link_to @event.topic, @event
+  %li Edit
+= content_for :actions do
+  %li= link_to 'Cancel', @event, :class => 'backleft'
+  
+%h1= "Editing #{@event.topic}"
+
+= render 'form'

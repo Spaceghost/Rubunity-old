@@ -23,6 +23,18 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
 
+  def edit
+    @event = Event.find(params[:id])
+  end
+
+  def update
+    if @event.update_attributes(params[:event])
+      redirect_to :back, :notice => "Event has been successfully updated."
+    else
+      render :new
+    end
+  end
+
   def register
     event = Event.find(params[:event_id])
     if current_user 
