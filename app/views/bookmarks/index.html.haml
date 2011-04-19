@@ -4,12 +4,12 @@
   %li Bookmarks
   
 = content_for :actions do
-  - if can? :create, @bookmark
+  - unless !current_user
     %li= link_to 'New Bookmark', new_bookmark_path, :class => 'addleft float_right'
 
 = content_for :contentbar do
   #custom_search
-    - form_for search_path, :url => search_path, :method => 'post' do |f|
+    = form_for search_path, :url => search_path, :method => 'post' do |f|
       %input#search{:autosave => "prb_srch", :name => "query", :placeholder => "Search...", :results => "5", :style => "width:170px", :type => "search"}/
 
 %h1 Bookmarks

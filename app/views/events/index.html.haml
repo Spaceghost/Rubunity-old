@@ -4,7 +4,8 @@
   %li Events
 
 = content_for :actions do
-  %li= link_to 'New Event', new_event_path, :class => 'addleft float_right'
+  - unless !current_user
+    %li= link_to 'New Event', new_event_path, :class => 'addleft float_right'
 
 %h1
   Events

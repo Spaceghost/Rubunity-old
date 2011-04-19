@@ -6,11 +6,11 @@ class Event < ActiveRecord::Base
 
   
   def to_param
-    "#{speaker.downcase.gsub(/[^a-z0-9]+/i, '-')}-#{topic.downcase.gsub(/[^a-z0-9]+/i, '-')}"
+    "#{id}-#{speaker.downcase.gsub(/[^a-z0-9]+/i, '-')}-#{topic.downcase.gsub(/[^a-z0-9]+/i, '-')}"
   end
   
-  def verify_event
-    
+  def verify_event(current_user)
+    self.users.exists?(current_user)
   end
 
   def full?

@@ -10,7 +10,7 @@
   Seats Available:
   = @event.available_slots
 
-
-= @event.full? ? "Full" : link_to("Sign Up", event_sign_up_path(@event))
-%br/
-= link_to "Un Sign Up", event_un_sign_up_path(@event)
+- if current_user && @event.verify_event(current_user)
+  = link_to "Cancel Registration", event_unregister_path(@event), :class => 'btn'
+- else 
+  = link_to "Register", event_register_path(@event)

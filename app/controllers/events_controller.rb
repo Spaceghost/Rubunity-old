@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  load_and_authorize_resource
 
   def index
      @events = Event.where("event_date >=?", Time.now)
@@ -19,22 +20,21 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = find_event(params[:id])
+    @event = Event.find(params[:id])
   end
 
-  def sign_up
-    event = Event.find_by_permalink(params[:event_id])
-
-    event.users << current_user
-    if event.save
+  def register
+    event = Event.find(params[:event_id])
+    if current_user 
+      event.users << current_user
       redirect_to :back, :notice => "You have successfully signed up for this event." and return
     else
-      redirect_to register_url, :notice => "You have either already signed up for this event or are not logged in."
+      redirect_to login_url, :notice => "You must be a member of the Rubunity community to register for an event."
     end
   end
   
-  def un_sign_up
-    event = Event.find_by_permalink(params[:event_id])
+  def unregister
+    event = Event.find(params[:event_id])
 
     event.users.delete current_user
     if event.save

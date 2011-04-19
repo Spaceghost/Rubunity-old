@@ -3,21 +3,20 @@ class Ability
 
   def initialize(user)
     user ||= User.new # guest user account
-    
+     
     if user.role?(:admin)
       can :manage, :all
     else
       can :read, :all
-      #can :create, Comment
-      can :vote, Bookmark
-    
+      # cannot :create, Bookmark
+      # can :vote, Bookmark
+
       if user.role?(:moderator)
-        can :manage, Bookmark
+        can :manage, :all
         can :add_topic, Bookmark
         can :remove_topic, Bookmark
         can :add_rails_version, Bookmark
         can :add_ruby_version, Bookmark
-        can :manage, Comment
       end
     
       if user.role?(:contributor)
@@ -29,6 +28,7 @@ class Ability
         end
         can :create, @comment
         can :update, @comment, :user_id => user.id
+        can [:create, :register, :unregister], Event
       end
     end
   end
