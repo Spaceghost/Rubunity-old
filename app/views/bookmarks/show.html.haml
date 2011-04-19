@@ -8,11 +8,6 @@
   - if can? :edit, @bookmark
     %li= link_to 'Edit', edit_bookmark_path(@bookmark), :class => 'editleft'
     %li= link_to 'Back', bookmarks_path, :class => 'backleft'
-
-:javascript
-  $("#rails-version-list ul li").live('click', function() {
-    $(this).toggleClass("active");
-  })
   
 %p#notice
   
@@ -51,10 +46,9 @@
   Topics
   %span{:style => 'float:right; font-size:12px;'}
     - if can? :add_topic, @bookmark
-      %a{:href => "#topic-form", :rel => "fancybox", :class => "addleft add-topic-link"} Add Topic
+      %a{:href => "#topic-form", :rel => "fancybox", :class => "addleft add-topic-link"} Add
     - if can? :remove_topic, @bookmark
-      %br/
-      %a{:href => "#remove-topic-form", :rel => "fancybox", :class => "removeleft remove-topic-link"} Remove Topic
+      %a{:href => "#remove-topic-form", :rel => "fancybox", :class => "removeleft remove-topic-link"} Remove
     
 #topics
   - if ! @bookmark.topic_list.blank?
@@ -87,10 +81,9 @@
   Rails Versions
   %span{:style => 'float:right; font-size:12px;'}
     - if can? :add_rails_version, @bookmark
-      = link_to 'Add Rails Version', '#rails-version-list', {:rel => 'fancybox', :class => 'addleft'}
+      = link_to 'Add', '#rails-version-list', {:rel => 'fancybox', :class => 'addleft'}
     - if can? :remove_rails_version, @bookmark
-      %br/
-      %a{:href => "#remove-rails-version-form", :rel => "fancybox", :class => "removeleft remove-rails-version-link"} Remove Rails Version
+      %a{:href => "#remove-rails-version-form", :rel => "fancybox", :class => "removeleft remove-rails-version-link"} Remove
      
 #rails-versions
   - if ! @bookmark.rails_version_list.blank?
@@ -132,10 +125,9 @@
   Ruby Versions
   %span{:style => 'float:right; font-size:12px;'}
     - if can? :add_ruby_version, @bookmark
-      %a{:href => "#ruby_version_form", :rel => "fancybox", :class => "addleft add-ruby-link"} Add Ruby Version
+      %a{:href => "#ruby_version_form", :rel => "fancybox", :class => "addleft add-ruby-link"} Add
     - if can? :remove_ruby_version, @bookmark
-      %br/
-      %a{:href => "#remove-ruby-version-form", :rel => "fancybox", :class => "removeleft remove-ruby-version-link"} Remove Ruby Version
+      %a{:href => "#remove-ruby-version-form", :rel => "fancybox", :class => "removeleft remove-ruby-version-link"} Remove
     
 #ruby-versions
   - if ! @bookmark.ruby_version_list.blank?

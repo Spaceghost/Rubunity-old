@@ -15,6 +15,9 @@ $(function() {
     return true;
   });
   
+  $("#rails-version-list ul li").live('click', function() {
+    $(this).toggleClass("active");
+  })
 
   $('.up_vote').click(function() {
     //alert($(this).attr('value'));

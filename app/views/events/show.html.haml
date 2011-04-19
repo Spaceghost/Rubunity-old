@@ -1,4 +1,9 @@
 - title @event.topic
+
+= content_for :breadcrumbs do
+  %li= link_to 'Events', events_path
+  %li= @event.topic
+
 %p#notice
 %h1
   = @event.topic
