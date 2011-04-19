@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110417034936) do
+ActiveRecord::Schema.define(:version => 20110419160204) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "user_id"
@@ -32,16 +32,6 @@ ActiveRecord::Schema.define(:version => 20110417034936) do
   end
 
   add_index "bookmarks", ["url"], :name => "index_bookmarks_on_url", :unique => true
-
-  create_table "comments", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "title"
-    t.text     "body"
-    t.integer  "commentable_id"
-    t.string   "commentable_type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "events", :force => true do |t|
     t.string   "topic"

@@ -6,8 +6,6 @@ Rubunity::Application.routes.draw do
 
   root :to => "pages#home"
 
-  resources :comments
-
   resources :bookmarks do
     match "add_topic" => "bookmarks#add_topic"
     match "add_rails_version" => "bookmarks#add_rails_version"
@@ -19,8 +17,6 @@ Rubunity::Application.routes.draw do
     
     get :add_topic
     post :add_topic
-     
-    resources :comments
   end
   
   # votes

@@ -26,8 +26,7 @@ class Ability
         can :update, Bookmark do |bookmark|
           bookmark.try(:user) == user
         end
-        can :create, @comment
-        can :update, @comment, :user_id => user.id
+
         can [:create, :register, :unregister], Event
       end
     end

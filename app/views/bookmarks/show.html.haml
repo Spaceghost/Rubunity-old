@@ -158,23 +158,3 @@
 %h2.bookmarks.section{:style => 'margin:50px 0 20px 0;'} 
 %h2.bookmarks.section Comments
 
-#comments
-  - if ! @bookmark.comments.blank?
-    - @bookmark.comments.each do |comment|
-      = render 'comment', :comment => comment
-  - else
-    %p.sosumi No comments have been added
-
-%br/
-- if can? :create, @comment
-  - if current_user
-    #comment_form
-      = form_for [@bookmark, Comment.new] do |f|
-        %p
-          = f.label :body, "Comment"
-          %p
-          = f.text_area :body, :cols => '120', :rows => '10', :class => 'comment-field'
-          %p.float_right
-          = image_submit_tag '/images/buttons/add_comment.png'
-          .clearer
-          %br/

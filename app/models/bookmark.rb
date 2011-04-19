@@ -2,7 +2,6 @@ class Bookmark < ActiveRecord::Base
   make_voteable
   
   belongs_to :user
-  has_many :comments, :as => :commentable
   after_create :generate_permalink
 
   acts_as_taggable 
@@ -17,7 +16,6 @@ class Bookmark < ActiveRecord::Base
     # fields
     indexes title, :sortable => true
     indexes description
-    #indexes comments.body
     indexes ruby_versions.name, :as => :ruby_versions
     indexes rails_versions.name, :as => :rails_versions
     indexes topics.name, :as => :topic

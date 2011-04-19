@@ -3,16 +3,7 @@ class SearchController < ApplicationController
   def query
     logger.debug "!!!!!!!!!!!!!!!!!!!! blah"
     if params[:q]
-      if params[:q].include? "comments:"
-        @params = params[:q].split(':')
-        @type = @params[0]
-        @query = @params[1]
-        @results = Comment.search @query, :star => true, :page => params[:page], :per_page => 20
-      elsif params[:q].include? "tags:"
-        @results = ThinkingSphinx.search params[:q], :page => params[:page], :per_page => 20
-      else
-        @results = ThinkingSphinx.search params[:q], :page => params[:page], :per_page => 20
-      end
+      @results = ThinkingSphinx.search params[:q], :page => params[:page], :per_page => 20
     end
     
     render :template => 'search/results'

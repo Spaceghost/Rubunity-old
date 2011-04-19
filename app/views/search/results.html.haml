@@ -4,8 +4,6 @@
   
 %h1{:style => 'text-shadow:0px 1px 0px #C4C4C4'} Results for "#{params[:q]}"
 - case @type
-- when "comments"
-  = render :partial => 'comments' 
 - when "articles"
 - else
   = render :partial => 'bookmarks'
