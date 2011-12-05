@@ -8,7 +8,7 @@ gem 'rails', '3.0.6'
 gem 'mysql2'
 gem 'acts-as-taggable-on'
 gem 'thinking-sphinx', '2.0.1', :require => 'thinking_sphinx'
-gem 'authlogic', :git => 'git://github.com/esparkman/authlogic.git'
+gem 'authlogic'
 gem 'haml'
 gem 'will_paginate', :git => 'git://github.com/mislav/will_paginate.git', :branch => 'rails3'
 gem 'cancan'
@@ -22,7 +22,6 @@ group :development do
   gem 'nifty-generators'
   gem 'jquery-rails'
   gem 'rails3-generators'
-  gem 'annotate-models'
 end
 
 group :test, :development do
